@@ -1,0 +1,37 @@
+{
+  "name": "use-outdated-effect",
+  "version": "1.0.0",
+  "description": "useEffect with outdated detect for async functions",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banyudu/use-outdated-effect.git"
+  },
+  "keywords": [
+    "useEffect",
+    "async",
+    "outdated"
+  ],
+  "author": "Yudu Ban <banyudu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/banyudu/use-outdated-effect/issues"
+  },
+  "homepage": "https://github.com/banyudu/use-outdated-effect#readme",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.14"
+  }
+}
