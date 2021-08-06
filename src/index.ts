@@ -1,7 +1,7 @@
 import { useEffect, useRef, EffectCallback, DependencyList } from 'react';
 
 const useAsyncEffect = (
-  effect: (outdated: () => boolean, unmounted: () => boolean, ) => ReturnType<EffectCallback>,
+  effect: (outdated: () => boolean, unmounted: () => boolean, ) => ReturnType<EffectCallback> | Promise<ReturnType<EffectCallback>>,
   inputs?: DependencyList,
 ) => {
   const asyncFlag = useRef<number>(0);

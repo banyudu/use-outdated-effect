@@ -22,24 +22,20 @@ const App = (props) => {
 
   const [dataSource, setDataSource] = useState(null)
 
-  useOutdatedEffect((outdated, unmounted) => {
+  useOutdatedEffect(async (outdated, unmounted) => {
+    const { data } = await axios.get(`/api/mydata/${id}`)
 
-    const fetchData = async () => {
-      const { data } = await axios.get(`/api/mydata/${id}`)
-
-      if (outdated()) { // check whether dependencies changed. In this example, it's the id variable
-        // id changed, stop the current operations
-        return
-      }
-
-      if (unmounted()) { // check whether component is unmounted
-        // component destroied, stop the current operations
-        return
-      }
-
-      setDataSource(data)
+    if (outdated()) { // check whether dependencies changed. In this example, it's the id variable
+      // id changed, stop the current operations
+      return
     }
 
+    if (unmounted()) { // check whether component is unmounted
+      // component destroied, stop the current operations
+      return
+    }
+
+    setDataSource(data)
   }, [id])
 
 }
