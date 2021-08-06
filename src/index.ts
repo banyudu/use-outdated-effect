@@ -1,7 +1,11 @@
 import { useEffect, useRef, EffectCallback, DependencyList } from 'react';
 
+type EffectCallbackReturnType = ReturnType<EffectCallback>
+type PromiseifyUnion<T> = T extends any ? ( T | Promise<T>) : never;
+type AsyncEffectReturnType = PromiseifyUnion<EffectCallbackReturnType>
+
 const useAsyncEffect = (
-  effect: (outdated: () => boolean, unmounted: () => boolean, ) => ReturnType<EffectCallback> | Promise<ReturnType<EffectCallback>>,
+  effect: (outdated: () => boolean, unmounted: () => boolean, ) => AsyncEffectReturnType,
   inputs?: DependencyList,
 ) => {
   const asyncFlag = useRef<number>(0);
